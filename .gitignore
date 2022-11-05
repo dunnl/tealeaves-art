@@ -1,3 +1,4 @@
+# Standard Haskell gitignores
 dist
 dist-*
 cabal-dev
@@ -21,3 +22,10 @@ cabal.project.local
 cabal.project.local~
 .HTF/
 .ghc.environment.*
+
+# Miscallenous files
+.#*
+
+# Generated files
+out/
+*.svg

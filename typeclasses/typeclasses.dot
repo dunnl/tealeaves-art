@@ -1,0 +1,15 @@
+digraph {
+  node [shape=box];
+  Functor -> Monad;
+  Functor -> DecoratedFunctor;
+  Functor -> TraversableFunctor;
+  DecoratedFunctor -> DecoratedMonad;
+  TraversableFunctor -> TraversableMonad;
+  DecoratedFunctor -> DecoratedTraversableFunctor;
+  TraversableFunctor -> DecoratedTraversableFunctor;
+  Monad -> DecoratedMonad;
+  Monad -> TraversableMonad;
+  DecoratedMonad -> DecoratedTraversableMonad;
+  TraversableMonad -> DecoratedTraversableMonad;
+  DecoratedTraversableFunctor -> DecoratedTraversableMonad;
+}

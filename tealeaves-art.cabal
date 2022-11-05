@@ -1,0 +1,39 @@
+cabal-version:      2.4
+name:               tealeaves-art
+version:            0.1.0.0
+synopsis: A Haskell package for generating SVG art for Tealeaves
+description: This package generates SVG art for Tealeaves using Haskell's diagrams package.
+bug-reports: https://github.com/dunnl/tealeaves-art
+license:            MIT
+author:             Lawrence Dunn
+maintainer:         dunnla@seas.upenn.edu
+category: Diagrams, Tealeaves
+
+extra-source-files:
+    CHANGELOG.md
+    README.md
+
+library
+    default-extensions:
+      NoMonomorphismRestriction, FlexibleContexts, TypeFamilies
+    exposed-modules:  Tealeaves.Art.Common
+                    , Tealeaves.Art.Cube
+                    , Tealeaves.Art.Tree
+                    , Tealeaves.Art
+    build-depends:    base ^>=4.15.1.0
+    hs-source-dirs:   lib
+    build-depends:    base >=4.11 && < 4.18
+                    , diagrams-contrib
+                    , diagrams-lib >= 1.4 && < 1.5
+                    , diagrams-svg >= 1.4 && < 1.5
+                    , SVGFonts >= 1.8 && < 1.9
+                    , colour == 2.3.*
+                    , palette == 0.3.*
+    default-language: Haskell2010
+
+executable tealeaves-art
+    main-is:          Main.hs
+    build-depends:    base ^>=4.15.1.0
+                    , tealeaves-art
+    hs-source-dirs:   app
+    default-language: Haskell2010
