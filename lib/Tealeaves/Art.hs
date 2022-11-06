@@ -9,7 +9,7 @@ import Tealeaves.Art.Tree
 
 main :: IO ()
 main = multiMain $
-  [ ("tree-small", pad 1.1 $ renderSTLC t1)
+  [ ("logo", pad 1.1 $ renderSTLC t1)
   , ("tree", pad 1.1 $ renderSTLC (App "" t1 t2))
   , ("cube", pad 1.1 $ typeclass_cube)
   , ("node-f", pad 1.2 $ circleFromNode (F, Fun))
