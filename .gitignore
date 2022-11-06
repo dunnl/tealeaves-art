@@ -24,8 +24,8 @@ cabal.project.local~
 .ghc.environment.*
 
 # Miscallenous files
-.#*
+.\#*
 
 # Generated files
-out/
+_out/
 *.svg
