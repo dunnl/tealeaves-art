@@ -21,7 +21,7 @@ circleFromColors (ml, mc, mr) =
     leftPart   = cr ml # clipBy (square 2 # translateX (-1.4))
     rightPart  = cr mr # clipBy (square 2 # translateX 1.4)
     centerPart = cr mc # clipBy (B.intersection Winding (sq 0.5) (sq (-0.5)))
-    outline    = circle 1 # fc black # lw 5
+    outline    = circle 1 # fc black # lwN 0.01
     cr mcolor  = circle 1 # fc (fromMaybe white mcolor)
     sq off     = square 4 # translate (off ^& 0)
 
