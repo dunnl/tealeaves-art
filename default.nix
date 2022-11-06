@@ -13,15 +13,17 @@ rec {
   tealeaves-art = stdenv.mkDerivation rec {
     name = "tealeaves-art";
     src = ./.;
-    phases = "unpackPhase buildPhase";
+    phases = "buildPhase installPhase";
     version = "0.1";
-    buildInputs = [ tealeaves-art-gen ];
+    buildInputs = [ pkgs.haskellPackages.cabal-install
+                    tealeaves-art-gen pkgs.ruby pkgs.which ];
+    tealeaves-art = tealeaves-art-gen;
     buildPhase = ''
-      export LOCALE_ARCHIVE="${pkgs.glibcLocales}/lib/locale/locale-archive";
-      export LANG=en_US.UTF-8
-      tealeaves-art-gen build
-      mkdir $out
-      cp -r out/* $out
+      ruby $src/make.rb
+    '';
+    installPhase = ''
+      mkdir -p $out
+      cp -r _out/* $out
     '';
     meta = {
       description = "SVG art for Tealeaves";

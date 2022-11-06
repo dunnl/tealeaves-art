@@ -1,3 +1,12 @@
+def command?(command)
+  system("which #{command} > /dev/null 2>&1")
+end
+
+if command?("tealeaves-art")
+  then builder = "tealeaves-art"
+  else builder = "cabal run tealeaves-art --"
+end
+
 $out_dir = "_out"
 $nodes_dir = "_out/nodes"
 
@@ -10,7 +19,7 @@ fdout = File.open("#{$out_dir}/output.txt", "a")
 fderr = File.open("#{$out_dir}/error.txt", "a")
 commands.each do |cmd|
   large_sizes.each do |size|
-    Kernel.spawn("cabal run tealeaves-art -- --selection #{cmd} --output _out/#{cmd}_#{size}.svg --width #{size}",
+    Kernel.spawn("#{builder} --selection #{cmd} --output _out/#{cmd}_#{size}.svg --width #{size}",
                  :out => fdout, :err => fderr)
   end
 end
@@ -23,7 +32,7 @@ fdout = File.open("#{$nodes_dir}/output.txt", "a")
 fderr = File.open("#{$nodes_dir}/error.txt", "a")
 nodes.each do |cmd|
   small_sizes.each do |size|
-    Kernel.spawn("cabal run tealeaves-art -- --selection #{cmd} --output _out/nodes/#{cmd}_#{size}.svg --width #{size}",
+    Kernel.spawn("#{builder} --selection #{cmd} --output _out/nodes/#{cmd}_#{size}.svg --width #{size}",
                  :out => fdout, :err => fderr)
   end
 end

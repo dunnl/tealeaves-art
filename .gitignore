@@ -25,6 +25,7 @@ cabal.project.local~
 
 # Miscallenous files
 .\#*
+result
 
 # Generated files
 _out/
