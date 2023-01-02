@@ -2,7 +2,7 @@
 module Tealeaves.Art (main) where
 
 import Diagrams.Prelude
-import Diagrams.Backend.SVG.CmdLine (multiMain)
+import Diagrams.Backend.Rasterific.CmdLine (multiMain)
 import Tealeaves.Art.Common
 import Tealeaves.Art.Cube
 import Tealeaves.Art.Tree

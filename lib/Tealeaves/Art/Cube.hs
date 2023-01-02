@@ -1,7 +1,7 @@
 module Tealeaves.Art.Cube where
 
 import Diagrams.Prelude
-import Diagrams.Backend.SVG
+import Diagrams.Backend.Rasterific
 import Data.Colour
 import Data.Typeable (Typeable (..))
 import Data.Maybe (fromMaybe)

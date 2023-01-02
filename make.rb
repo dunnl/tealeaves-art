@@ -19,7 +19,7 @@ fdout = File.open("#{$out_dir}/output.txt", "a")
 fderr = File.open("#{$out_dir}/error.txt", "a")
 commands.each do |cmd|
   large_sizes.each do |size|
-    Kernel.spawn("#{builder} --selection #{cmd} --output _out/#{cmd}_#{size}.svg --width #{size}",
+    Kernel.spawn("#{builder} --selection #{cmd} --output _out/#{cmd}_#{size}.png --width #{size}",
                  :out => fdout, :err => fderr)
   end
 end
@@ -32,7 +32,7 @@ fdout = File.open("#{$nodes_dir}/output.txt", "a")
 fderr = File.open("#{$nodes_dir}/error.txt", "a")
 nodes.each do |cmd|
   small_sizes.each do |size|
-    Kernel.spawn("#{builder} --selection #{cmd} --output _out/nodes/#{cmd}_#{size}.svg --width #{size}",
+    Kernel.spawn("#{builder} --selection #{cmd} --output _out/nodes/#{cmd}_#{size}.png --width #{size}",
                  :out => fdout, :err => fderr)
   end
 end

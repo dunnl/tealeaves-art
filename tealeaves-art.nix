@@ -1,4 +1,4 @@
-{ mkDerivation, base, colour, diagrams-contrib, diagrams-lib
+{ mkDerivation, base, colour, diagrams-contrib, diagrams-lib, diagrams-rasterific
 , diagrams-svg, lib, palette, SVGFonts
 }:
 mkDerivation {
@@ -8,8 +8,7 @@ mkDerivation {
   isLibrary = true;
   isExecutable = true;
   libraryHaskellDepends = [
-    base colour diagrams-contrib diagrams-lib diagrams-svg palette
-    SVGFonts
+    base colour diagrams-contrib diagrams-lib diagrams-svg palette diagrams-rasterific SVGFonts
   ];
   executableHaskellDepends = [ base ];
   description = "A Haskell package for generating SVG art for Tealeaves";

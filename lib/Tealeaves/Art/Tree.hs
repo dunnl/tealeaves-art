@@ -1,7 +1,7 @@
 module Tealeaves.Art.Tree where
 
 import Diagrams.Prelude
-import Diagrams.Backend.SVG
+import Diagrams.Backend.Rasterific
 import Tealeaves.Art.Common
 
 data STLC a =
