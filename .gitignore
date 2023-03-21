@@ -1,3 +1,5 @@
+.direnv/
+
 # Standard Haskell gitignores
 dist
 dist-*

@@ -2,11 +2,11 @@ def command?(command)
   system("which #{command} > /dev/null 2>&1")
 end
 
-if command?("tealeaves-art")
+if command?("tealeaves-art-gen")
 then
-  $builder = "tealeaves-art"
+  $builder = "tealeaves-art-gen"
 else
-  $builder = "cabal run tealeaves-art --"
+  $builder = "cabal run tealeaves-art-gen --"
 end
 
 def go (dir, selections, sizes)
