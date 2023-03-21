@@ -3,38 +3,38 @@ def command?(command)
 end
 
 if command?("tealeaves-art")
-  then builder = "tealeaves-art"
-  else builder = "cabal run tealeaves-art --"
+then
+  $builder = "tealeaves-art"
+else
+  $builder = "cabal run tealeaves-art --"
 end
 
-$out_dir = "_out"
-$nodes_dir = "_out/nodes"
-
-Dir.mkdir $out_dir unless File.directory?($out_dir)
-Dir.mkdir $nodes_dir unless File.directory?($nodes_dir)
-
-commands = ["logo", "cube", "tree"]
-large_sizes = ["512", "256", "128", "96"]
-fdout = File.open("#{$out_dir}/output.txt", "a")
-fderr = File.open("#{$out_dir}/error.txt", "a")
-commands.each do |cmd|
-  large_sizes.each do |size|
-    Kernel.spawn("#{builder} --selection #{cmd} --output _out/#{cmd}_#{size}.png --width #{size}",
-                 :out => fdout, :err => fderr)
+def go (dir, selections, sizes)
+  Dir.mkdir dir unless File.directory? dir
+  fdout = File.open("#{dir}/output.txt", "a")
+  fderr = File.open("#{dir}/error.txt", "a")
+  selections.each do |sel|
+    sizes.each do |size|
+      command = "#{$builder} --selection #{sel} --output #{dir}/#{sel}_#{size}.png --width #{size}"
+      Kernel.spawn(command, :out => fdout, :err => fderr)
+    end
   end
+  fdout.close
+  fderr.close
 end
-fdout.close
-fderr.close
 
-nodes = ["node-f", "node-d", "node-dt", "node-m", "node-dm", "node-dt", "node-dtm"]
-small_sizes = ["64", "32", "16"]
-fdout = File.open("#{$nodes_dir}/output.txt", "a")
-fderr = File.open("#{$nodes_dir}/error.txt", "a")
-nodes.each do |cmd|
-  small_sizes.each do |size|
-    Kernel.spawn("#{builder} --selection #{cmd} --output _out/nodes/#{cmd}_#{size}.png --width #{size}",
-                 :out => fdout, :err => fderr)
-  end
+def mkImages
+  selections = ["logo", "cube", "tree"]
+  sizes = ["512", "256", "128", "96"]
+  go("_out", selections, sizes)
 end
-fdout.close
-fderr.close
+
+def mkNodes
+  selections = ["node-f", "node-d", "node-dt", "node-m", "node-dm", "node-dt", "node-dtm"]
+  sizes = ["64", "32", "16"]
+  go("_out/nodes", selections, sizes)
+end
+
+mkImages
+mkNodes
+
